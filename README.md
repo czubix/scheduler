@@ -29,35 +29,43 @@ class Scheduler:
         check_interval: Optional[Union[float, int]] = None,
         schedule_cleaner_interval: Optional[str] = None,
         loop: Optional[asyncio.AbstractEventLoop] = None
-    ) -> None
+    ) -> None:
+        ...
 
     def get_schedules(self,
         name: Optional[str] = None,
         *,
         check: Optional[Callable] = None
-    ) -> List[Schedule]
+    ) -> List[Schedule]:
+        ...
 
     def create_schedule(self,
         task: Callable,
         interval: Union[datetime, str],
         **kwargs: dict
-    ) -> Schedule
+    ) -> Schedule:
+        ...
 
     def cancel_schedules(self,
         schedules: Union[List[Schedule], Schedule] = None
-    ) -> None
+    ) -> None:
+        ...
 
     def uncancel_schedules(self,
         schedules: Union[List[Schedule], Schedule] = None
-    ) -> None
+    ) -> None:
+        ...
 
     def hide_schedules(self,
         schedules: Union[List[Schedule], Schedule] = None
-    ) -> None
+    ) -> None:
+        ...
 
     def unhide_schedules(self,
         schedules: Union[List[Schedule], Schedule] = None
-    ) -> None
+    ) -> None:
+        ...
 
-    def clear_schedules(self) -> None
+    def clear_schedules(self) -> None:
+        ...
 ```
