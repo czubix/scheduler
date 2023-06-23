@@ -1,5 +1,5 @@
 # Description:
-shitty python async scheduler
+python async scheduler
 
 # Example:
 ```py
