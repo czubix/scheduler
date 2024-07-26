@@ -1,5 +1,19 @@
 # Description:
-python async scheduler
+A simple async scheduler library
+
+# Installation:
+
+```bash
+$ git clone https://github.com/czubix/scheduler.git
+$ cd scheduler
+$ python3 -m pip install -U .
+```
+
+or
+
+```bash
+$ python3 -m pip install git+https://github.com/czubix/scheduler.git
+```
 
 # Example:
 ```py

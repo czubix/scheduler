@@ -15,9 +15,11 @@ limitations under the License.
 """
 
 import asyncio, time, re, uuid
+
 from datetime import datetime
 from enum import Enum
-from typing import Callable, Optional, Union, List
+
+from typing import Callable, Optional, Union, List, Any
 
 TIME_PATTERN = re.compile(r"\d+[smhd]")
 UNITS = {"s": 1, "m": 60, "h": 3600, "d": 86400}
@@ -58,7 +60,7 @@ class Schedule:
     def __repr__(self) -> str:
         return f"<Scheduler name={self.name!r} interval={self.interval}s flags={self.flags!r} calls=({self.calls}, {self.times})>"
 
-    def __call__(self) -> object:
+    def __call__(self) -> Any:
         self.timestamp += self.interval
         self.calls += 1
 
