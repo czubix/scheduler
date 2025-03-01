@@ -35,12 +35,28 @@ loop = asyncio.get_event_loop()
 loop.run_forever()
 ```
 
+```py
+from scheduler import Scheduler, TempDict
+scheduler = Scheduler()
+
+temp = TempDict(scheduler, "10m")
+
+temp["foo"] = "bar" # "foo" will expire after 10 minutes unless accessed, which extends its lifetime.
+```
+
 # Documentation:
 ```python
+class TempDict:
+    def __init__(self,
+        scheduler: Scheduler,
+        lifetime: str | int
+    ) -> None:
+        ...
+
 class Scheduler:
     def __init__(self,
         *,
-        check_interval: Optional[Union[float, int]] = None,
+        check_interval: Optional[float | int] = None,
         schedule_cleaner_interval: Optional[str] = None,
         loop: Optional[asyncio.AbstractEventLoop] = None
     ) -> None:
@@ -50,33 +66,33 @@ class Scheduler:
         name: Optional[str] = None,
         *,
         check: Optional[Callable] = None
-    ) -> List[Schedule]:
+    ) -> list[Schedule]:
         ...
 
     def create_schedule(self,
         task: Callable,
-        interval: Union[datetime, str],
+        interval: datetime | str,
         **kwargs: dict
     ) -> Schedule:
         ...
 
     def cancel_schedules(self,
-        schedules: Union[List[Schedule], Schedule] = None
+        schedules: list[Schedule] | Schedule = None
     ) -> None:
         ...
 
     def uncancel_schedules(self,
-        schedules: Union[List[Schedule], Schedule] = None
+        schedules: list[Schedule] | Schedule = None
     ) -> None:
         ...
 
     def hide_schedules(self,
-        schedules: Union[List[Schedule], Schedule] = None
+        schedules: list[Schedule] | Schedule = None
     ) -> None:
         ...
 
     def unhide_schedules(self,
-        schedules: Union[List[Schedule], Schedule] = None
+        schedules: list[Schedule] | Schedule = None
     ) -> None:
         ...
 
